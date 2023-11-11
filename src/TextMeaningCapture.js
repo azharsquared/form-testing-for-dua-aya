@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 
-const TextMeaningCapture = () => {
+const TextMeaningCapture = ({wordbyword}) => {
   const [textGroups, setTextGroups] = useState([{ text: '', meaning: '' }]);
 
   const addTextGroup = () => {
     setTextGroups([...textGroups, { text: '', meaning: '' }]);
   };
+
+  const completeSave = () => {
+    console.log('completeSave', textGroups);
+    wordbyword.push(...textGroups); 
+  }
 
   const handleTextChange = (index, text) => {
     const updatedTextGroups = [...textGroups];
@@ -18,6 +23,7 @@ const TextMeaningCapture = () => {
     updatedTextGroups[index].meaning = meaning;
     setTextGroups(updatedTextGroups);
   };
+
 
   return (
     <div>
@@ -41,6 +47,7 @@ const TextMeaningCapture = () => {
         </div>
       ))}
       <button onClick={addTextGroup}>Add Text Group</button>
+      <button onClick={completeSave}>Save Text Group</button>
     </div>
   );
 };

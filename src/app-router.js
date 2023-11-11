@@ -17,7 +17,7 @@ const AppRouter = () => {
         </ul>
 
         <Routes>
-          <Route exact path="/" element={<DuaList/>} />
+           {/* <Route exact path="/" element={<DuaList/>} />  */}
           <Route path="/dua-capture" element={<DuaCapture/>} />
         </Routes>
       </div>
