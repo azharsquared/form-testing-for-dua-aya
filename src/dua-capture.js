@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import TextMeaningCapture from './TextMeaningCapture';
+import DuaMeaningCapture from './DuaMeaningCapture';
 
 const DuaCapture = () => {
   const [duaInfo, setDuaInfo] = useState({
     id: '',
     name: '',
-    arabic: '',
-    translation: '',
-    transliteration: '',
+    duas: [],
     categoryName: '',
     categoryId: '',
     duaTime: '',
@@ -19,11 +18,13 @@ const DuaCapture = () => {
     duaSourceReference: '',
     duaPreText: '',
     duaPostText: '',
-    count: 0,
+    nameInMalayalam:'',
+    count: 1,
     wordbyword: []
   });
 
   useEffect(() => {
+    console.log('duaInfo', duaInfo);
 
   }, [duaInfo]);
 
@@ -31,9 +32,10 @@ const DuaCapture = () => {
     setDuaInfo({
       id: '',
       name: '',
-      arabic: '',
-      translation: '',
-      transliteration: '',
+      duas: [],
+      // arabic: '',
+      // translation: '',
+      // transliteration: '',
       categoryName: '',
       categoryId: '',
       duaTime: '',
@@ -45,7 +47,8 @@ const DuaCapture = () => {
       duaSourceReference: '',
       duaPreText: '',
       duaPostText: '',
-      count: 0,
+      nameInMalayalam:'',
+      count: 1,
       wordbyword: []
     });
   };
@@ -58,13 +61,22 @@ const DuaCapture = () => {
     });
   };
 
+  const handleCategoryChange = (event) => {
+    const { name, value } = event.target;
+    setDuaInfo({
+      ...duaInfo,
+      [name]: value,
+    });
+  };
+
+  
   const saveDua = () => {
     console.log('saveDua');
     const dataToSave = {
       name: duaInfo.name,
-      arabic: duaInfo.arabic,
-      translation: duaInfo.translation,
-      transliteration: duaInfo.transliteration,
+      duas: duaInfo.duas,
+      // translation: duaInfo.translation,
+      // transliteration: duaInfo.transliteration,
       wordbyword: duaInfo.wordbyword,
       count: duaInfo.count,
     };
@@ -115,8 +127,8 @@ const DuaCapture = () => {
   return (
     <div>
       <div>
-        <h2>Dua Capture</h2>
-        <form>
+        <h2>Enter a dua</h2>
+        <div>
           <div>
             <label htmlFor="id">Dua ID:</label>
             <input
@@ -128,16 +140,22 @@ const DuaCapture = () => {
             />
           </div>
           <div>
-            <label htmlFor="name">category Name:</label>
-            <input
+            <label htmlFor="name">Select a category:</label>
+            {/* <input
               type="text"
               id="categoryName"
               name="categoryName"
               value={duaInfo.categoryName}
               onChange={handleInputChange}
-            />
+            /> */}
+            <select id="categoryId" name="categoryId" onChange={handleCategoryChange} value={duaInfo.categoryId}>
+                  <option value="">Select one</option>
+                  <option value="1">Adhkaru sabah</option>
+                  <option value="2">Adhkaru masah</option>
+                  <option value="3">prayer after salah</option>
+               </select>
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="name">category ID:</label>
             <input
               type="text"
@@ -146,9 +164,19 @@ const DuaCapture = () => {
               value={duaInfo.categoryId}
               onChange={handleInputChange}
             />
+          </div> */}
+          <div>
+            <label htmlFor="name">What is the name of dua (in malayalam):</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={duaInfo.nameInMalayalam}
+              onChange={handleInputChange}
+            />
           </div>
           <div>
-            <label htmlFor="name">Dua Name:</label>
+            <label htmlFor="name">What is the name of dua (in English):</label>
             <input
               type="text"
               id="name"
@@ -158,37 +186,10 @@ const DuaCapture = () => {
             />
           </div>
           <div>
-            <label htmlFor="arabic">Dua in Arabic:</label>
-            <textarea
-              type="text"
-              id="arabic"
-              name="arabic"
-              value={duaInfo.arabic}
-              onChange={handleInputChange}
-            />
+            <DuaMeaningCapture duas={duaInfo.duas} />
           </div>
           <div>
-            <label htmlFor="translation">Dua Translation:</label>
-            <textarea
-              type="text"
-              id="translation"
-              name="translation"
-              value={duaInfo.translation}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="transliteration">Dua Transliteration:</label>
-            <textarea
-              type="text"
-              id="transliteration"
-              name="transliteration"
-              value={duaInfo.transliteration}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="count">Dua Count:</label>
+            <label htmlFor="count">How many times we need to repeat(Count in numbers):</label>
             <input
               type="number"
               id="count"
@@ -198,7 +199,7 @@ const DuaCapture = () => {
             />
           </div>
           <div>
-            <label htmlFor="duaTime">duaTime:</label>
+            <label htmlFor="duaTime">when we need to recite (provide exact time ):</label>
             <input
               type="text"
               id="duaTime"
@@ -209,7 +210,7 @@ const DuaCapture = () => {
           </div>
 
           <div>
-            <label htmlFor="duaDate">duaDate:</label>
+            <label htmlFor="duaDate">Is this dua needed on specific date (Arabic date):</label>
             <input
               type="text"
               id="duaDate"
@@ -231,7 +232,7 @@ const DuaCapture = () => {
           </div>
 
           <div>
-            <label htmlFor="duaPlace">duaPlace:</label>
+            <label htmlFor="duaPlace">Is this recited in any specific place (like in toilet etc)</label>
             <input
               type="text"
               id="duaPlace"
@@ -241,7 +242,7 @@ const DuaCapture = () => {
             />
           </div>
 
-          <div>
+          {/* <div>
             <label htmlFor="duaSource">duaSource:</label>
             <input
               type="text"
@@ -250,10 +251,10 @@ const DuaCapture = () => {
               value={duaInfo.duaSource}
               onChange={handleInputChange}
             />
-          </div>
+          </div> */}
 
           <div>
-            <label htmlFor="duaIsQuranic">duaIsQuranic:</label>
+            <label htmlFor="duaIsQuranic">Is dua from quran ?</label>
             <input
               type="checkbox"
               id="duaIsQuranic"
@@ -264,7 +265,7 @@ const DuaCapture = () => {
           </div>
 
           <div>
-            <label htmlFor="duaSourceReference">duaSourceReference:</label>
+            <label htmlFor="duaSourceReference">Provide reference (like surah and ayath)</label>
             <input
               type="text"
               id="duaSourceReference"
@@ -275,7 +276,7 @@ const DuaCapture = () => {
           </div>
 
           <div>
-            <label htmlFor="duaPreText">duaPreText:</label>
+            <label htmlFor="duaPreText">Is there a pre text ?</label>
             <input
               type="text"
               id="duaPreText"
@@ -286,7 +287,7 @@ const DuaCapture = () => {
           </div>
 
           <div>
-            <label htmlFor="duaPostText">duaPostText:</label>
+            <label htmlFor="duaPostText">provide post text if any </label>
             <input
               type="text"
               id="duaPostText"
@@ -295,7 +296,7 @@ const DuaCapture = () => {
               onChange={handleInputChange}
             />
           </div>
-        </form>
+        </div>
       </div>
       <div>
         <TextMeaningCapture wordbyword={duaInfo.wordbyword} />

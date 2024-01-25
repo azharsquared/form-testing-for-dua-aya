@@ -27,7 +27,7 @@ const TextMeaningCapture = ({wordbyword}) => {
 
   return (
     <div>
-      <h2>Text and Meaning Capture</h2>
+      <h2>Add each word and its meaning in order!</h2>
       {textGroups.map((textGroup, index) => (
         <div key={index}>
           <label htmlFor={`text-${index}`}>Text:</label>
