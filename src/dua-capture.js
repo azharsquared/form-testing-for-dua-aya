@@ -72,13 +72,25 @@ const DuaCapture = () => {
   
   const saveDua = () => {
     console.log('saveDua');
+    
     const dataToSave = {
+      id: duaInfo.id,
       name: duaInfo.name,
       duas: duaInfo.duas,
-      // translation: duaInfo.translation,
-      // transliteration: duaInfo.transliteration,
-      wordbyword: duaInfo.wordbyword,
+      categoryName: duaInfo.categoryName,
+      categoryId: duaInfo.categoryId,
+      duaTime: duaInfo.duaTime,
+      duaDate: duaInfo.duaDate,
+      duaPeriod: duaInfo.duaPeriod,
+      duaPlace: duaInfo.duaPlace,
+      duaSource: duaInfo.duaSource,
+      duaIsQuranic: duaInfo.duaIsQuranic,
+      duaSourceReference: duaInfo.duaSourceReference,
+      duaPreText: duaInfo.duaPreText,
+      duaPostText: duaInfo.duaPostText,
+      nameInMalayalam: duaInfo.nameInMalayalam,
       count: duaInfo.count,
+      wordbyword: duaInfo.wordbyword
     };
 
     console.log(dataToSave);
