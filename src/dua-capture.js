@@ -72,6 +72,11 @@ const DuaCapture = () => {
   
   const saveDua = () => {
     console.log('saveDua');
+
+    if(duaInfo.id =='' || duaInfo.categoryId == ''){
+      alert('Please enter dua id and select a category');
+      return;
+    }
     
     const dataToSave = {
       id: duaInfo.id,
@@ -106,7 +111,7 @@ const DuaCapture = () => {
     // Create a download link
     const a = document.createElement('a');
     a.href = url;
-    a.download = (duaInfo.name ? duaInfo.name : 'no_name') + '.json';
+    a.download = (duaInfo.categoryId +"."+ duaInfo.id) + '.json';
 
     // Trigger a click event on the download link
     a.click();
