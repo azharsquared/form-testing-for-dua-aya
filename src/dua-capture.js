@@ -152,7 +152,7 @@ const DuaCapture = () => {
             />
           </div>
           <div>
-            <label htmlFor="name">Select a category:</label>
+            <label htmlFor="categoryId">Select a category:</label>
             {/* <input
               type="text"
               id="categoryName"
@@ -178,11 +178,11 @@ const DuaCapture = () => {
             />
           </div> */}
           <div>
-            <label htmlFor="name">What is the name of dua (in malayalam):</label>
+            <label htmlFor="nameInMalayalam">What is the name of dua (in malayalam):</label>
             <input
               type="text"
-              id="name"
-              name="name"
+              id="nameInMalayalam"
+              name="nameInMalayalam"
               value={duaInfo.nameInMalayalam}
               onChange={handleInputChange}
             />
@@ -289,7 +289,7 @@ const DuaCapture = () => {
 
           <div>
             <label htmlFor="duaPreText">Is there a pre text ?</label>
-            <input
+            <textarea
               type="text"
               id="duaPreText"
               name="duaPreText"
@@ -300,7 +300,7 @@ const DuaCapture = () => {
 
           <div>
             <label htmlFor="duaPostText">provide post text if any </label>
-            <input
+            <textarea
               type="text"
               id="duaPostText"
               name="duaPostText"
