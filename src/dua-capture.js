@@ -170,6 +170,7 @@ const DuaCapture = () => {
                   <option value="1">Adhkaru sabah</option>
                   <option value="2">Adhkaru masah</option>
                   <option value="3">prayer after salah</option>
+                  <option value="4">Adan</option>
                </select>
           </div>
           {/* <div>
