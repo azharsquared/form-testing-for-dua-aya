@@ -219,6 +219,26 @@ const DuaCapture = () => {
                   <option value="50">Placing children under Allah's protection</option>
                   <option value="51">Excellence of visiting the sick</option>
                   <option value="52">When visiting the sick</option>
+                  <option value="53">When the sick have renounced all hope of life</option>
+                  <option value="54">Instruction for the one nearing death</option>
+                  <option value="55">For one afflicted by a calamity</option>
+                  <option value="56">When closing the eyes of the deceased</option>
+                  <option value="57">Dua for the deceased at the funeral prayer</option>
+                  <option value="58">Dua for a deceased child at the funeral prayer</option>
+                  <option value="59">Condolence</option>
+                  <option value="60">When placing the deceased in the grave</option>
+                  <option value="61">After burying the deceased</option>
+                  <option value="62">When visiting the graves</option>
+                  <option value="63">During a wind storm</option>
+                  <option value="64">Upon hearing thunder</option>
+                  <option value="65">Dua asking for rainfall</option>
+                  <option value="66">When it rains</option>
+                  <option value="67">After rainfall</option>
+                  <option value="68">Asking for clear skies</option>
+                  <option value="69">Upon sighting the crescent moon</option>
+                  <option value="70">Upon breaking fast (Iftar)</option>
+                  <option value="71">Dua before eating</option>
+                  <option value="72">Upon completing the meal</option>
                </select>
           </div>
           {/* <div>
